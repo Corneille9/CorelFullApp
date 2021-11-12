@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "5043033819",
+    "project_id": "corelapp-24129",
+    "storage_bucket": "corelapp-24129.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5043033819:android:eacb0d1e30f30e0a221efe",
+        "android_client_info": {
+          "package_name": "com.corel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "5043033819-ighs10lqibp1r1d3c2h3fiscn097no6s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWs2gWoj8ROpaO3UiQG6tg6YSR_ZP5QDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "5043033819-ighs10lqibp1r1d3c2h3fiscn097no6s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

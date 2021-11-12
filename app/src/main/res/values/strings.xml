@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Corel</string>
+    <string name="hello_world">Hello World!</string>
+    <string name="key_word">mot cle</string>
+    <string name="mon_bouton">Mon bouton</string>
+    <string name="product_form_text">Ce formulaire vous permet de creer un produit en un instant</string>
+    <string name="designation">Designation</string>
+    <string name="description">Description</string>
+    <string name="price">Prix</string>
+    <string name="quantity_available">Quantite disponible</string>
+    <string name="alert_quantity">Quantite d\'alerte</string>
+    <string name="add">Ajouter</string>
+    <string name="new_product_info">Détails sur le produit</string>
+    <string name="name_txt">Nom du produit</string>
+    <string name="description_txt">Description</string>
+    <string name="price_txt">Prix Unitaire</string>
+    <string name="quantity_txt">Quantité en stock</string>
+    <string name="alert_quantity_txt">Quantité d\'alerte</string>
+    <string name="value_txt">value</string>
+    <string name="param">Paramètre</string>
+    <string name="title_activity_product">ProductActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="todo">TODO</string>
+</resources>
