@@ -1,29 +1,20 @@
 package com.corel.corelfullapp;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.corel.corelfullapp.adapter.ProductAdapter;
 import com.corel.corelfullapp.dao.DataBaseRoom;
-import com.corel.corelfullapp.dao.ProductDao;
-import com.corel.corelfullapp.dao.DataBaseHelper;
 import com.corel.corelfullapp.dao.ProductRoomDao;
 import com.corel.corelfullapp.databinding.ActivityProductBinding;
 import com.corel.corelfullapp.entites.Product;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ProductActivity extends AppCompatActivity {
 
@@ -96,7 +87,6 @@ public class ProductActivity extends AppCompatActivity {
         });
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == MAIN_CALL && resultCode == RESULT_OK) {
