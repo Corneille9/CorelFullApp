@@ -57,7 +57,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         if (requestCode == MAIN_CALL && resultCode == RESULT_OK) {
             assert data != null;
             if (data.hasExtra("product")) {
-                Product product = (Product) data.getExtras().getSerializable("product");
+                product = (Product) data.getExtras().getSerializable("product");
                 updateView(product);
             }
         }

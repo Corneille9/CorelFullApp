@@ -70,6 +70,24 @@ public class ProductActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        new Thread(new Runnable() {
+            final List<Product> localProducts = new ArrayList<>();
+
+            @Override
+            public void run() {
+                localProducts.addAll(productRoomDao.findAll());
+                runOnUiThread(() -> {
+                    products.clear();
+                    products.addAll(localProducts);
+                    productAdapter.notifyDataSetChanged();
+                });
+            }
+        }).start();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return super.onCreateOptionsMenu(menu);
