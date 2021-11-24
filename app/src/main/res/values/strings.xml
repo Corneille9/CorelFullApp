@@ -10,6 +10,7 @@
     <string name="quantity_available">Quantite disponible</string>
     <string name="alert_quantity">Quantite d\'alerte</string>
     <string name="add">Ajouter</string>
+    <string name="modify">Modifier</string>
     <string name="new_product_info">Détails sur le produit</string>
     <string name="name_txt">Nom du produit</string>
     <string name="description_txt">Description</string>
@@ -28,4 +29,6 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="todo">TODO</string>
+    <string name="product_name">Product Name</string>
+    <string name="del">Supprimer</string>
 </resources>

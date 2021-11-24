@@ -1,16 +1,19 @@
 package com.corel.corelfullapp;
 
-import android.app.Activity;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.corel.corelfullapp.dao.DataBaseRoom;
+import com.corel.corelfullapp.dao.ProductRoomDao;
 import com.corel.corelfullapp.entites.Product;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -26,18 +29,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextInputEditText priceEditText;
     private TextInputEditText quantityInStockEditText;
     private TextInputEditText alertQuantityEditText;
+    private Button my_btn;
+
+    private int INSERT_ACTION = 0;
+    private int MODIFICATION_ACTION = 1;
+//    private ProductDao productDao = new ProductDao(this);
+
+    private ProductRoomDao productRoomDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         designationEditText = findViewById(R.id.name);
         descriptionEditText = findViewById(R.id.description);
         priceEditText = findViewById(R.id.price);
         quantityInStockEditText = findViewById(R.id.quantity_in_stock);
         alertQuantityEditText = findViewById(R.id.alert_quantity);
+        my_btn = findViewById(R.id.my_btn);
 
-        findViewById(R.id.my_btn).setOnClickListener(this::saveProduct);
+        hasProductModificationAction();
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        productRoomDao = DataBaseRoom.getInstance(this).productRoomDao();
     }
 
     @Override
@@ -47,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onCreateOptionsMenu(menu);
     }
 
-    public void saveProduct(View view) {
+    public void saveProduct(int action, Integer id) {
 
         if (isEmptyInput(designationEditText, false)){
             Toast.makeText(getApplicationContext(), "Le nom de produit est vide", Toast.LENGTH_SHORT).show();
@@ -71,12 +90,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.e(TAG, "saveProduct: " + product);
             Toast.makeText(getApplicationContext(), "Produit enregistré", Toast.LENGTH_SHORT).show();
 
+            if (action == INSERT_ACTION){
+                new Thread(() -> {
+                    productRoomDao.insert(product);
+                    product.id = productRoomDao.findByName(product.name, product.description).get(0).id;
+                }).start();
+            }else if (action == MODIFICATION_ACTION){
+                product.id = id;
+                new Thread(() -> productRoomDao.update(product)).start();
+            }
+
             Intent intent = getIntent();
             intent.putExtra("product", product);
             setResult(RESULT_OK, intent);
             finish();
+
         }
-        
+
     }
 
     public boolean isEmptyInput(TextInputEditText textInputEditText, boolean mustContainNumber){
@@ -96,5 +126,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
 
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void hasProductModificationAction(){
+        Product product = (Product)getIntent().getSerializableExtra("product");
+        if (product != null) {
+            my_btn.setOnClickListener(view -> this.saveProduct(MODIFICATION_ACTION, product.id));
+            my_btn.setText("Modifier");
+            designationEditText.setText(product.name);
+            descriptionEditText.setText(product.description);
+            priceEditText.setText(String.valueOf(product.price));
+            quantityInStockEditText.setText(String.valueOf(product.quantityInStock));
+            alertQuantityEditText.setText(String.valueOf(product.alertQuantity));
+        }else {
+            my_btn.setOnClickListener(view -> this.saveProduct(INSERT_ACTION, null));
+        }
     }
 }
