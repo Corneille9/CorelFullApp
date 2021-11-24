@@ -68,7 +68,6 @@ public class ProductDetailActivity extends AppCompatActivity {
         new Thread(() -> {
             DataBaseRoom.getInstance(getApplicationContext()).productRoomDao().delete(product);
             Intent intent = getIntent();
-            intent.putExtra("product", product);
             setResult(RESULT_OK, intent);
             finish();
         }).start();

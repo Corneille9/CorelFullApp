@@ -105,30 +105,22 @@ public class ProductActivity extends AppCompatActivity {
             if (data.hasExtra("product")) {
                 Product product = (Product) data.getExtras().getSerializable("product");
                 products.add(product);
-//                products = productDao.findAll();
                 buildCustomAdapter();
-                Toast.makeText(getApplicationContext(), "Nouveau produit ajouter", Toast.LENGTH_LONG).show();
             }
         }else if (requestCode == PRODUCT_DETAIL_CALL && resultCode == RESULT_OK){
-            assert data != null;
-            if (data.hasExtra("product")) {
-//                Product product = (Product) data.getExtras().getSerializable("product");
-//                products.removeIf(product1 -> product1.id == product.id);
+            new Thread(new Runnable() {
+                final List<Product> localProducts = new ArrayList<>();
 
-                new Thread(new Runnable() {
-                    final List<Product> localProducts = new ArrayList<>();
-
-                    @Override
-                    public void run() {
-                        localProducts.addAll(productRoomDao.findAll());
-                        runOnUiThread(() -> {
-                            products.clear();
-                            products.addAll(localProducts);
-                            productAdapter.notifyDataSetChanged();
-                        });
-                    }
-                }).start();
-            }
+                @Override
+                public void run() {
+                    localProducts.addAll(productRoomDao.findAll());
+                    runOnUiThread(() -> {
+                        products.clear();
+                        products.addAll(localProducts);
+                        productAdapter.notifyDataSetChanged();
+                    });
+                }
+            }).start();
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
