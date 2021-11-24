@@ -112,9 +112,22 @@ public class ProductActivity extends AppCompatActivity {
         }else if (requestCode == PRODUCT_DETAIL_CALL && resultCode == RESULT_OK){
             assert data != null;
             if (data.hasExtra("product")) {
-                Product product = (Product) data.getExtras().getSerializable("product");
-                products.removeIf(product1 -> product1.id == product.id);
-                productAdapter.notifyDataSetChanged();
+//                Product product = (Product) data.getExtras().getSerializable("product");
+//                products.removeIf(product1 -> product1.id == product.id);
+
+                new Thread(new Runnable() {
+                    final List<Product> localProducts = new ArrayList<>();
+
+                    @Override
+                    public void run() {
+                        localProducts.addAll(productRoomDao.findAll());
+                        runOnUiThread(() -> {
+                            products.clear();
+                            products.addAll(localProducts);
+                            productAdapter.notifyDataSetChanged();
+                        });
+                    }
+                }).start();
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
