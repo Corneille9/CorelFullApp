@@ -74,7 +74,6 @@ public class ProductActivity extends AppCompatActivity {
         super.onResume();
         new Thread(new Runnable() {
             final List<Product> localProducts = new ArrayList<>();
-
             @Override
             public void run() {
                 localProducts.addAll(productRoomDao.findAll());
