@@ -62,9 +62,9 @@ public class ProductActivity extends AppCompatActivity {
                 public void run() {
                     ProductWebService productWebService = new ProductWebService();
                     List<Product> serverProducts = new ArrayList<>(productWebService.getProducts());
-//                    localProducts.addAll(productRoomDao.findAll());
+                    localProducts.addAll(productRoomDao.findAll());
                     runOnUiThread(() -> {
-//                        products.addAll(localProducts);
+                        products.addAll(localProducts);
                         products.addAll(serverProducts);
                         productAdapter.notifyDataSetChanged();
                     });
@@ -74,25 +74,25 @@ public class ProductActivity extends AppCompatActivity {
 //        dataBaseHelper = new DataBaseHelper(this);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        new Thread(new Runnable() {
-            final List<Product> localProducts = new ArrayList<>();
-            @Override
-            public void run() {
-//                localProducts.addAll(productRoomDao.findAll());
-                ProductWebService productWebService = new ProductWebService();
-                List<Product> serverProducts = new ArrayList<>(productWebService.getProducts());
-                runOnUiThread(() -> {
-                    products.clear();
-//                    products.addAll(localProducts);
-                    products.addAll(serverProducts);
-                    productAdapter.notifyDataSetChanged();
-                });
-            }
-        }).start();
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        new Thread(new Runnable() {
+//            final List<Product> localProducts = new ArrayList<>();
+//            @Override
+//            public void run() {
+////                localProducts.addAll(productRoomDao.findAll());
+//                ProductWebService productWebService = new ProductWebService();
+//                List<Product> serverProducts = new ArrayList<>(productWebService.getProducts());
+//                runOnUiThread(() -> {
+//                    products.clear();
+////                    products.addAll(localProducts);
+//                    products.addAll(serverProducts);
+//                    productAdapter.notifyDataSetChanged();
+//                });
+//            }
+//        }).start();
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

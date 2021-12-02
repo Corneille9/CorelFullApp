@@ -63,6 +63,14 @@ public class ProductDetailActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = getIntent();
+        setResult(RESULT_OK, intent);
+        finish();
+        super.onBackPressed();
+    }
+
     public void deleteProduct(){
         new Thread(() -> {
             DataBaseRoom.getInstance(getApplicationContext()).productRoomDao().delete(product);
