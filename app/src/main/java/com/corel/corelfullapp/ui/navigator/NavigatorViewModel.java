@@ -32,7 +32,7 @@ public class NavigatorViewModel extends AndroidViewModel {
         new Thread(() -> {
             productWebService = new ProductWebService();
             mutableLiveData.postValue(productWebService.getProducts());
-//            mutableLiveData.postValue(productRoomDao.findAll());
+            mutableLiveData.postValue(productRoomDao.findAll());
         }).start();
     }
 }

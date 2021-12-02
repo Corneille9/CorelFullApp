@@ -13,6 +13,7 @@ import com.corel.corelfullapp.dao.DataBaseRoom;
 import com.corel.corelfullapp.dao.ProductRoomDao;
 import com.corel.corelfullapp.databinding.ActivityProductBinding;
 import com.corel.corelfullapp.entites.Product;
+import com.corel.corelfullapp.webservices.ProductWebService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,9 +60,12 @@ public class ProductActivity extends AppCompatActivity {
 
                 @Override
                 public void run() {
-                    localProducts.addAll(productRoomDao.findAll());
+                    ProductWebService productWebService = new ProductWebService();
+                    List<Product> serverProducts = new ArrayList<>(productWebService.getProducts());
+//                    localProducts.addAll(productRoomDao.findAll());
                     runOnUiThread(() -> {
-                        products.addAll(localProducts);
+//                        products.addAll(localProducts);
+                        products.addAll(serverProducts);
                         productAdapter.notifyDataSetChanged();
                     });
                 }
@@ -77,10 +81,13 @@ public class ProductActivity extends AppCompatActivity {
             final List<Product> localProducts = new ArrayList<>();
             @Override
             public void run() {
-                localProducts.addAll(productRoomDao.findAll());
+//                localProducts.addAll(productRoomDao.findAll());
+                ProductWebService productWebService = new ProductWebService();
+                List<Product> serverProducts = new ArrayList<>(productWebService.getProducts());
                 runOnUiThread(() -> {
                     products.clear();
-                    products.addAll(localProducts);
+//                    products.addAll(localProducts);
+                    products.addAll(serverProducts);
                     productAdapter.notifyDataSetChanged();
                 });
             }
@@ -124,7 +131,10 @@ public class ProductActivity extends AppCompatActivity {
                     localProducts.addAll(productRoomDao.findAll());
                     runOnUiThread(() -> {
                         products.clear();
+//                        ProductWebService productWebService = new ProductWebService();
+//                        List<Product> serverProducts = new ArrayList<>(productWebService.getProducts());
                         products.addAll(localProducts);
+//                        products.addAll(serverProducts);
                         productAdapter.notifyDataSetChanged();
                     });
                 }

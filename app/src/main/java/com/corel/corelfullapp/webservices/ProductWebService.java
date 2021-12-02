@@ -52,21 +52,4 @@ public class ProductWebService {
             return new ArrayList<>();
         }
     }
-
-    public Product updateProduct(Product product) {
-        RequestBody body = RequestBody.create(gson.toJson(product),
-                MediaType.get("application/json; charset=utf-8"));
-        Request request = new Request.Builder()
-                .url(baseUrl)
-                .post(body)
-                .build();
-
-        try (Response response = httpClient.newCall(request).execute()) {
-            return gson.fromJson(response.body().string(), Product.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-
-    }
 }

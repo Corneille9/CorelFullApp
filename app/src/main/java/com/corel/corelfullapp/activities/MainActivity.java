@@ -17,6 +17,7 @@ import com.corel.corelfullapp.R;
 import com.corel.corelfullapp.dao.DataBaseRoom;
 import com.corel.corelfullapp.dao.ProductRoomDao;
 import com.corel.corelfullapp.entites.Product;
+import com.corel.corelfullapp.webservices.ProductWebService;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Objects;
@@ -94,10 +95,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             if (action == INSERT_ACTION){
                 new Thread(() -> {
+                    ProductWebService productWebService = new ProductWebService();
+                    productWebService.createProduct(product);
                     productRoomDao.insert(product);
                     product.id = productRoomDao.findByName(product.name, product.description).get(0).id;
                 }).start();
             }else if (action == MODIFICATION_ACTION){
+                assert id != null;
                 product.id = id;
                 new Thread(() -> productRoomDao.update(product)).start();
             }
