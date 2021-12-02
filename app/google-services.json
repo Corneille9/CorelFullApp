@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:5043033819:android:eacb0d1e30f30e0a221efe",
+        "mobilesdk_app_id": "1:5043033819:android:fced2b4a50330015221efe",
         "android_client_info": {
-          "package_name": "com.corel"
+          "package_name": "com.corel.corelfullapp"
         }
       },
       "oauth_client": [

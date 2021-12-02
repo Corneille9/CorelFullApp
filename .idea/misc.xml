@@ -13,10 +13,24 @@
         <entry key="..\:/Users/Corneille/AndroidStudioProjects/CorelFullApp/app/src/main/res/layout/simple_product_item.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/drawable-anydpi/add.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/drawable-anydpi/del.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/drawable-anydpi/ic_add_name.xml" value="0.240625" />
+        <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/layout/activity_auth.xml" value="0.21041666666666667" />
         <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/layout/activity_main.xml" value="0.209375" />
         <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/layout/activity_product.xml" value="0.209375" />
         <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/layout/activity_product_detail.xml" value="0.209375" />
+        <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/layout/code_verification_fragment.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/layout/content_auth.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/layout/content_product.xml" value="0.209375" />
+        <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/layout/edit_product_fragment.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/layout/fragment_blank.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/layout/fragment_code_verification.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/layout/fragment_first.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/layout/fragment_second.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/layout/navigator_activity.xml" value="0.10916919959473151" />
+        <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/layout/navigator_fragment.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/layout/phone_define_fragment.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/layout/product_detail_fragment.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/layout/product_detail_fragment2.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/layout/regular_product_item.xml" value="0.209375" />
         <entry key="..\:/Users/banko/AndroidStudioProjects/CorelFullApp/app/src/main/res/menu/main_menu.xml" value="0.209375" />
       </map>

@@ -1,4 +1,4 @@
-package com.corel.corelfullapp;
+package com.corel.corelfullapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.view.Menu;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.corel.corelfullapp.R;
 import com.corel.corelfullapp.adapter.ProductAdapter;
 import com.corel.corelfullapp.dao.DataBaseRoom;
 import com.corel.corelfullapp.dao.ProductRoomDao;

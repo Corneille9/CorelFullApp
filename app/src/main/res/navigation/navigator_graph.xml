@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigator_graph"
+    app:startDestination="@id/navigatorFragment">
+
+    <fragment
+        android:id="@+id/navigatorFragment"
+        android:name="com.corel.corelfullapp.ui.navigator.NavigatorFragment"
+        android:label="navigator_fragment"
+        tools:layout="@layout/navigator_fragment">
+        <action
+            android:id="@+id/create_navigatorFragment_to_editProductFragment"
+            app:destination="@id/editProductFragment"/>
+        <action
+            android:id="@+id/show_action_navigatorFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProductFragment"
+        android:name="com.corel.corelfullapp.ui.editproduct.EditProductFragment"
+        android:label="edit_product_fragment"
+        tools:layout="@layout/edit_product_fragment">
+        <action
+            android:id="@+id/action_editProductFragment_to_navigatorFragment"
+            app:destination="@id/navigatorFragment" />
+        <action
+            android:id="@+id/success_modification_action_editProductFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.corel.corelfullapp.ui.showproduct.ProductDetailFragment"
+        android:label="product_detail_fragment"
+        tools:layout="@layout/product_detail_fragment" >
+        <action
+            android:id="@+id/modifiy_action_productDetailFragment_to_editProductFragment2"
+            app:destination="@id/editProductFragment" />
+        <action
+            android:id="@+id/delete_action_productDetailFragment_to_navigatorFragment"
+            app:destination="@id/navigatorFragment" />
+    </fragment>
+</navigation>

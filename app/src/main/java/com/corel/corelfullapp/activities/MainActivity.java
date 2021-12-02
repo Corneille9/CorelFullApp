@@ -1,4 +1,4 @@
-package com.corel.corelfullapp;
+package com.corel.corelfullapp.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -10,8 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.corel.corelfullapp.R;
 import com.corel.corelfullapp.dao.DataBaseRoom;
 import com.corel.corelfullapp.dao.ProductRoomDao;
 import com.corel.corelfullapp.entites.Product;
@@ -66,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onCreateOptionsMenu(menu);
     }
 
-    public void saveProduct(int action, Integer id) {
+    public void saveProduct(int action, @Nullable Integer id) {
 
         if (isEmptyInput(designationEditText, false)){
             Toast.makeText(getApplicationContext(), "Le nom de produit est vide", Toast.LENGTH_SHORT).show();

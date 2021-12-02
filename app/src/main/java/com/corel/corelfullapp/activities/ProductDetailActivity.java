@@ -1,4 +1,4 @@
-package com.corel.corelfullapp;
+package com.corel.corelfullapp.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -7,14 +7,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.corel.corelfullapp.R;
 import com.corel.corelfullapp.dao.DataBaseRoom;
-import com.corel.corelfullapp.dao.ProductRoomDao;
 import com.corel.corelfullapp.entites.Product;
 
 public class ProductDetailActivity extends AppCompatActivity {
