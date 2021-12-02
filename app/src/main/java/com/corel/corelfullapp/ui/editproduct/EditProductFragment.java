@@ -12,6 +12,8 @@
  import androidx.annotation.Nullable;
  import androidx.fragment.app.Fragment;
  import androidx.lifecycle.ViewModelProvider;
+ import androidx.navigation.NavController;
+ import androidx.navigation.NavOptions;
  import androidx.navigation.fragment.NavHostFragment;
 
  import com.corel.corelfullapp.R;
@@ -105,13 +107,17 @@
                  mViewModel.saveProduct(product);
                  Bundle bundle = new Bundle();
                  bundle.putSerializable("product", product);
-                 NavHostFragment.findNavController(EditProductFragment.this).navigate(R.id.action_editProductFragment_to_navigatorFragment, bundle);
+                 NavHostFragment.findNavController(this).popBackStack();
+
+//                 NavHostFragment.findNavController(this).navigate(R.id.action_editProductFragment_to_navigatorFragment, bundle);
              }else if (action == MODIFICATION_ACTION){
                  assert id != null;
                  mViewModel.updateProduct(product, id);
                  Bundle bundle = new Bundle();
                  bundle.putSerializable("product", product);
-                 NavHostFragment.findNavController(EditProductFragment.this).navigate(R.id.success_modification_action_editProductFragment_to_productDetailFragment, bundle);
+                 NavHostFragment.findNavController(this).popBackStack();
+
+//                 NavHostFragment.findNavController(this).navigate(R.id.success_modification_action_editProductFragment_to_productDetailFragment, bundle);
              }
          }
      }

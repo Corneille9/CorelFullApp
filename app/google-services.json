@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "5043033819-8k1j6d9pj4cctl2pof0l6crai1hm7o4e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.corel.corelfullapp",
+            "certificate_hash": "f018a754d0bd27938f23c70dc8f46fef0439b6d2"
+          }
+        },
+        {
           "client_id": "5043033819-ighs10lqibp1r1d3c2h3fiscn097no6s.apps.googleusercontent.com",
           "client_type": 3
         }

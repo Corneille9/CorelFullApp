@@ -2,6 +2,7 @@ package com.corel.corelfullapp.ui.navigator;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import java.util.List;
 
 public class NavigatorFragment extends Fragment {
 
+    private static final String TAG = "NavigatorFragment";
     private NavigatorViewModel mViewModel;
     private final List<Product> products = new ArrayList<>();
     private ProductAdapter productAdapter;
@@ -53,21 +55,22 @@ public class NavigatorFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        if (products.isEmpty()) {
-            mViewModel.loadProducts();
-        }else {
-            Bundle args = getArguments();
-            if (args != null){
-                Product product = (Product) args.getSerializable("product");
-                if (args.containsKey("product")){
-                    products.add(product);
-                    productAdapter.notifyDataSetChanged();
-                }else if (args.containsKey("deletedProduct")){
-                    products.removeIf(product::equals);
-                    productAdapter.notifyDataSetChanged();
-                }
-            }
-        }
+        mViewModel.loadProducts();
+//        Bundle args = getArguments();
+//        if (args != null){
+//            if (args.containsKey("product")){
+//                Product product = (Product) args.getSerializable("product");
+//                products.add(product);
+//                productAdapter.notifyDataSetChanged();
+//                Log.e(TAG, "onStart: dsgvsdhkhvsdvjvdd");
+//            }else if (args.containsKey("deletedProduct")){
+//                Product product = (Product) args.getSerializable("deletedProduct");
+//                products.removeIf(product::equals);
+//                productAdapter.notifyDataSetChanged();
+//            }
+//        }else {
+//            mViewModel.loadProducts();
+//        }
     }
 
     @Override
@@ -76,6 +79,7 @@ public class NavigatorFragment extends Fragment {
         mViewModel = new ViewModelProvider(this).get(NavigatorViewModel.class);
         // TODO: Use the ViewModel
         mViewModel.mutableLiveData.observe(getViewLifecycleOwner(), (productslists -> {
+            Log.e(TAG, "onActivityCreated: lists size " + productslists.size());
             products.addAll(productslists);
             productAdapter.notifyDataSetChanged();
         }));

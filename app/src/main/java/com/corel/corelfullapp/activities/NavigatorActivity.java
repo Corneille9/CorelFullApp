@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.corel.corelfullapp.R;
 
@@ -18,7 +19,9 @@ public class NavigatorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigator_activity);
         if (savedInstanceState == null) {
-            NavController navController = Navigation.findNavController(this, R.id.navigator_graph);
+            NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.navigator_graph);
+            assert navHostFragment != null;
+            NavController navController = navHostFragment.getNavController();
         }
     }
 

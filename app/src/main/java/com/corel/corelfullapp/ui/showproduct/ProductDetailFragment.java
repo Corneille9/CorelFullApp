@@ -16,7 +16,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.corel.corelfullapp.R;
-import com.corel.corelfullapp.databinding.NavigatorFragmentBinding;
 import com.corel.corelfullapp.databinding.ProductDetailFragmentBinding;
 import com.corel.corelfullapp.entites.Product;
 
@@ -24,7 +23,6 @@ public class ProductDetailFragment extends Fragment {
 
     private ProductDetailViewModel mViewModel;
     private Product product;
-    final static int MAIN_CALL = 123;
     ProductDetailFragmentBinding binding;
 
     public static ProductDetailFragment newInstance() {
@@ -43,7 +41,7 @@ public class ProductDetailFragment extends Fragment {
         super.onStart();
         Bundle args = getArguments();
         if (args != null){
-            Product product = (Product) args.getSerializable("product");
+            product = (Product) args.getSerializable("product");
             assert product != null;
             updateView(product);
         }

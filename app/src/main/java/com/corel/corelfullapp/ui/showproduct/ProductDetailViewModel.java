@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import com.corel.corelfullapp.dao.DataBaseRoom;
 import com.corel.corelfullapp.dao.ProductRoomDao;
 import com.corel.corelfullapp.entites.Product;
+import com.corel.corelfullapp.webservices.ProductWebService;
 
 public class ProductDetailViewModel extends AndroidViewModel {
     // TODO: Implement the ViewModel
@@ -20,6 +21,8 @@ public class ProductDetailViewModel extends AndroidViewModel {
 
     public void deleteProduct(Product product){
         new Thread(() -> {
+            ProductWebService productWebService = new ProductWebService();
+
             productRoomDao.delete(product);
         }).start();
     }
