@@ -52,4 +52,37 @@ public class ProductWebService {
             return new ArrayList<>();
         }
     }
+
+    public Product updateProduct(Product product) {
+        RequestBody body = RequestBody.create(gson.toJson(product),
+                MediaType.get("application/json; charset=utf-8"));
+        Request request = new Request.Builder()
+                .url(baseUrl+"/"+product.id)
+                .put(body)
+                .build();
+
+        try (Response response = httpClient.newCall(request).execute()) {
+            return gson.fromJson(response.body().string(), Product.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+
+            return null;
+        }
+    }
+
+    public Product deleteProduct(Product product) {
+        Request request = new Request.Builder()
+                .url(baseUrl+"/"+product.id)
+                .delete()
+                .build();
+
+        try (Response response = httpClient.newCall(request).execute()) {
+            return gson.fromJson(response.body().string(), Product.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+
+            return null;
+        }
+    }
+
 }

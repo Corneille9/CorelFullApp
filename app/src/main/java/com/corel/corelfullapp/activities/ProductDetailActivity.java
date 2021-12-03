@@ -3,6 +3,7 @@ package com.corel.corelfullapp.activities;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.corel.corelfullapp.R;
 import com.corel.corelfullapp.dao.DataBaseRoom;
 import com.corel.corelfullapp.entites.Product;
+import com.corel.corelfullapp.webservices.ProductWebService;
 
 public class ProductDetailActivity extends AppCompatActivity {
 
@@ -73,7 +75,12 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     public void deleteProduct(){
         new Thread(() -> {
-            DataBaseRoom.getInstance(getApplicationContext()).productRoomDao().delete(product);
+            ProductWebService productWebService = new ProductWebService();
+            Product deleteProduct = productWebService.deleteProduct(product);
+            System.out.println("delete :: " + deleteProduct);
+            if (deleteProduct != null) {
+                DataBaseRoom.getInstance(getApplicationContext()).productRoomDao().delete(product);
+            }
             Intent intent = getIntent();
             setResult(RESULT_OK, intent);
             finish();

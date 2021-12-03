@@ -93,17 +93,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.e(TAG, "saveProduct: " + product);
             Toast.makeText(getApplicationContext(), "Produit enregistré", Toast.LENGTH_SHORT).show();
 
+            ProductWebService productWebService = new ProductWebService();
             if (action == INSERT_ACTION){
                 new Thread(() -> {
-                    ProductWebService productWebService = new ProductWebService();
-                    productWebService.createProduct(product);
-                    productRoomDao.insert(product);
-                    product.id = productRoomDao.findByName(product.name, product.description).get(0).id;
+                    Product save = productWebService.createProduct(product);
+                    System.out.println("save :: " + save);
+                    if (save != null) {
+                        productRoomDao.insert(product);
+                        product.id = productRoomDao.findByName(product.name, product.description).get(0).id;
+                    }
                 }).start();
             }else if (action == MODIFICATION_ACTION){
                 assert id != null;
                 product.id = id;
-                new Thread(() -> productRoomDao.update(product)).start();
+                Product update = productWebService.updateProduct(product);
+                System.out.println("update :: " + update);
+                if (update != null) {
+                    new Thread(() -> productRoomDao.update(product)).start();
+                }
             }
 
             Intent intent = getIntent();
