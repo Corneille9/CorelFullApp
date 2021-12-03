@@ -35,7 +35,6 @@ public class ProductWebService {
             e.printStackTrace();
             return null;
         }
-
     }
 
     public List<Product> getProducts() {
@@ -48,7 +47,6 @@ public class ProductWebService {
                     new TypeToken<List<Product>>(){}.getType());
         } catch (IOException e) {
             e.printStackTrace();
-
             return new ArrayList<>();
         }
     }
@@ -80,7 +78,6 @@ public class ProductWebService {
             return gson.fromJson(response.body().string(), Product.class);
         } catch (IOException e) {
             e.printStackTrace();
-
             return null;
         }
     }
